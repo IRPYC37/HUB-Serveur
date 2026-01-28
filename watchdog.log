@@ -1,0 +1,29 @@
+[2026-01-28 15:06:22] Watchdog demarre - Surveillance active
+[2026-01-28 15:07:01] Backend DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:07:10] Backend redemarre avec succes
+[2026-01-28 15:07:15] Frontend DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:07:24] Frontend redemarre avec succes
+[2026-01-28 15:07:54] Tunnel DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:07:59] Tunnel toujours DOWN apres redemarrage
+[2026-01-28 15:08:29] Tunnel DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:08:34] Tunnel toujours DOWN apres redemarrage
+[2026-01-28 15:09:06] Tunnel DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:09:11] Tunnel toujours DOWN apres redemarrage
+[2026-01-28 15:09:43] Tunnel DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:09:48] Tunnel toujours DOWN apres redemarrage
+[2026-01-28 15:11:26] Watchdog demarre - Surveillance active
+[2026-01-28 15:11:30] Backend DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:11:39] Backend redemarre avec succes
+[2026-01-28 15:11:44] Frontend DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:11:53] Frontend redemarre avec succes
+[2026-01-28 15:11:53] Tunnel DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:12:00] Tunnel redemarre avec succes
+[2026-01-28 15:35:16] Watchdog demarre - Surveillance active
+[2026-01-28 15:35:20] Backend DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:35:29] Backend redemarre avec succes
+[2026-01-28 15:35:33] Frontend DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:35:42] Frontend redemarre avec succes
+[2026-01-28 15:35:42] Tunnel DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:35:50] Tunnel redemarre avec succes
+[2026-01-28 15:37:24] Backend DOWN - Tentative redemarrage (0/10)
+[2026-01-28 15:37:33] Backend redemarre avec succes
