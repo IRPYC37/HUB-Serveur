@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import API_URL from "../config";
 
 export default function useRealtimeSeries(maxPoints = 30) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:3001");
+    // Convertir l'URL API en WebSocket URL
+    const wsURL = API_URL.replace(/^http/, "ws");
+    const ws = new WebSocket(wsURL);
 
     ws.onopen = () => {
       console.log("WebSocket connected");

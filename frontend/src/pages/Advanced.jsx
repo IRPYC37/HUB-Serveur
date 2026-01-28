@@ -5,6 +5,7 @@ import Gauge from "../components/ui/Gauge";
 import SystemGraph from "../components/graphs/SystemGraph";
 import useRealtimeSeries from "../hooks/useRealtimeSeries";
 import Loader from "../components/ui/Loader";
+import API_URL from "../config";
 
 export default function Advanced() {
   const [advancedData, setAdvancedData] = useState(null);
@@ -13,7 +14,7 @@ export default function Advanced() {
   useEffect(() => {
     const fetchAdvanced = async () => {
       try {
-        const response = await fetch("http://localhost:3001/api/advanced");
+        const response = await fetch(`${API_URL}/api/advanced`);
         const json = await response.json();
         setAdvancedData(json);
       } catch (error) {

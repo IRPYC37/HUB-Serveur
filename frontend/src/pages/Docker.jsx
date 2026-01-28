@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../components/ui/Card";
 import Loader from "../components/ui/Loader";
+import API_URL from "../config";
 
 export default function Docker() {
   const [containers, setContainers] = useState([]);
@@ -9,7 +10,7 @@ export default function Docker() {
   useEffect(() => {
     const fetchDocker = async () => {
       try {
-        const response = await fetch("http://localhost:3001/api/docker");
+        const response = await fetch(`${API_URL}/api/docker`);
         const json = await response.json();
         setContainers(json);
       } catch (error) {

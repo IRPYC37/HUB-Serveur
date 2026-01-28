@@ -6,14 +6,58 @@ import { users } from "./auth/users.js";
 import { generateToken, authMiddleware, requireRole } from "./auth/auth.js";
 
 const app = express();
-app.use(cors());
+
+// Configuration CORS pour le domaine
+const allowedOrigins = [
+  "http://localhost:5173",                // Développement local (Vite)
+  "http://localhost:3000",                // Développement local (React/Next)
+  "http://localhost:3001",                // Backend local
+  "https://hub.cyprienfournier.com",      // Frontend HUB Production
+  "https://hub-api.cyprienfournier.com"   // Backend HUB Production
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Accepter les requêtes sans origin (requêtes depuis le même domaine, Web Socket, etc)
+    if (!origin) {
+      callback(null, true);
+    } else if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else if (origin && origin.endsWith(".cyprienfournier.com")) {
+      // Accepter tous les sous-domaines de cyprienfournier.com (pour Cloudflare)
+      callback(null, true);
+    } else {
+      callback(new Error("CORS policy: origin not allowed"));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
+
+// ============ ROUTE RACINE (HEALTH CHECK) ============
+app.get("/", (req, res) => {
+  res.json({
+    message: "Nexus Hub Backend API",
+    version: "1.0.0",
+    status: "running",
+    timestamp: new Date().toISOString(),
+    endpoints: {
+      auth: "/api/login",
+      system: "/api/system",
+      advanced: "/api/advanced",
+      processes: "/api/processes",
+      network: "/api/network",
+      docker: "/api/docker"
+    }
+  });
+});
 
 // ============ AUTH ============
 app.post("/api/login", async (req, res) => {
   const { username, password } = req.body;
   const user = users.find(u => u.username === username);
-  
+
   if (!user) {
     return res.status(401).json({ error: "Invalid credentials" });
   }
@@ -21,7 +65,7 @@ app.post("/api/login", async (req, res) => {
   // Simple password check (in production, use bcrypt.compare)
   const passwordMatch = password === "admin123" && user.role === "admin" ||
                         password === "viewer123" && user.role === "viewer";
-  
+
   if (!passwordMatch) {
     return res.status(401).json({ error: "Invalid credentials" });
   }
@@ -124,8 +168,8 @@ app.post("/api/docker/:id/start", authMiddleware, requireRole("admin"), async (r
 });
 
 // ============ SERVER ============
-const server = app.listen(3001, () => {
-  console.log("\n🚀 Nexus Hub Backend running on http://localhost:3001");
+const server = app.listen(3001, "0.0.0.0", () => {
+  console.log("\n🚀 Nexus Hub Backend running on http://0.0.0.0:3001");
   console.log("\n👤 Default credentials:");
   console.log("   Admin: admin / admin123");
   console.log("   Viewer: viewer / viewer123\n");

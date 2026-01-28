@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import Card from "../components/ui/Card";
+import API_URL from "../config";
 
 export default function Login() {
   const [error, setError] = useState("");
@@ -18,7 +19,7 @@ export default function Login() {
     const password = e.target.password.value;
 
     try {
-      const response = await fetch("http://localhost:3001/api/login", {
+      const response = await fetch(`${API_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),

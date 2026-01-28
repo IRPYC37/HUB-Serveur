@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../components/ui/Card";
 import Loader from "../components/ui/Loader";
+import API_URL from "../config";
 
 export default function Network() {
   const [connections, setConnections] = useState([]);
@@ -9,7 +10,7 @@ export default function Network() {
   useEffect(() => {
     const fetchNetwork = async () => {
       try {
-        const response = await fetch("http://localhost:3001/api/network");
+        const response = await fetch(`${API_URL}/api/network`);
         const json = await response.json();
         setConnections(json);
       } catch (error) {

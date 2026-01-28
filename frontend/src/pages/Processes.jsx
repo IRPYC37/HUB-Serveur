@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../components/ui/Card";
 import Loader from "../components/ui/Loader";
+import API_URL from "../config";
 
 export default function Processes() {
   const [processes, setProcesses] = useState([]);
@@ -9,7 +10,7 @@ export default function Processes() {
   useEffect(() => {
     const fetchProcesses = async () => {
       try {
-        const response = await fetch("http://localhost:3001/api/processes");
+        const response = await fetch(`${API_URL}/api/processes`);
         const json = await response.json();
         setProcesses(json);
       } catch (error) {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../components/ui/Card";
 import Loader from "../components/ui/Loader";
+import API_URL from "../config";
 
 export default function System() {
   const [data, setData] = useState(null);
@@ -9,7 +10,7 @@ export default function System() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3001/api/system");
+        const response = await fetch(`${API_URL}/api/system`);
         const json = await response.json();
         setData(json);
       } catch (error) {
