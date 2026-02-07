@@ -9,6 +9,7 @@ import Advanced from "./pages/Advanced";
 import Processes from "./pages/Processes";
 import Network from "./pages/Network";
 import Docker from "./pages/Docker";
+import Console from "./pages/Console";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                   <Route path="/processes" element={<Processes />} />
                   <Route path="/network" element={<Network />} />
                   <Route path="/docker" element={<Docker />} />
+                  <Route path="/console" element={<Console />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
               </HubLayout>

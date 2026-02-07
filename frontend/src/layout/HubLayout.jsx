@@ -8,6 +8,7 @@ const links = [
   { to: "/processes", label: "Processes", icon: "⚙️" },
   { to: "/network", label: "Network", icon: "🌐" },
   { to: "/docker", label: "Docker", icon: "🐳" },
+  { to: "/console", label: "Console", icon: "🖥️" },
 ];
 
 export default function HubLayout({ children }) {
@@ -23,8 +24,8 @@ export default function HubLayout({ children }) {
     <div className="flex min-h-screen">
       <aside className="w-64 bg-black/40 backdrop-blur p-6 border-r border-white/5">
         <div className="mb-10">
-          <h1 className="text-2xl font-bold text-neon-blue">NEXUS HUB</h1>
-          <p className="text-xs text-white/50 mt-1">System Monitor</p>
+          <h1 className="text-2xl font-bold text-neon-blue">Serveur HUB</h1>
+          <p className="text-xs text-white/50 mt-1">Moniteur système</p>
         </div>
 
         <nav className="space-y-2 mb-10">
